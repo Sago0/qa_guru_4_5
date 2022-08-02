@@ -17,6 +17,7 @@ public class BaseSteps {
     public void openMainPage() {
         open(BASE_URL);
     }
+
     @Step("Ищем репозиторий {repository}")
     public void searchRepository(final String repository) {
         $(".header-search-input").click();
