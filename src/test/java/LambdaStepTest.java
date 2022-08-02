@@ -1,7 +1,6 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -14,8 +13,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static io.qameta.allure.Allure.parameter;
-import static io.qameta.allure.Allure.step;
+import static io.qameta.allure.Allure.*;
 
 public class LambdaStepTest {
 
@@ -27,13 +25,14 @@ public class LambdaStepTest {
     @Test
     @Owner("Me")
     @Tags({@Tag("wed"), @Tag("major")})
-    @Link(name = "Base URL", value = BASE_URL)
+//    @Link(name = "Base URL", value = BASE_URL)
     @Feature("Issue")
     @Story("Поиск Issue")
     @DisplayName("Поиск Issue по имени")
     public void testIssueSearch() {
         parameter("Repository", REPOSITORY);
         parameter("Issue Name", ISSUE_NAME);
+        link("GitHub", String.format("%s/%s", BASE_URL, REPOSITORY));
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
